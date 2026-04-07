@@ -1,197 +1,170 @@
 "use client";
 
-import React from "react";
-import { Typography } from "@material-tailwind/react";
-import {
-  CloudArrowUpIcon,
-  CalculatorIcon,
-  CheckBadgeIcon,
-  CpuChipIcon,
-  BeakerIcon,
-  TruckIcon,
-} from "@heroicons/react/24/outline";
+import Image from "next/image";
+import { Typography, Button } from "@material-tailwind/react";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const steps = [
   {
     title: "Upload CAD",
-    description: "Upload models for instant analysis.",
-    icon: CloudArrowUpIcon,
+    description:
+      "Upload your 3D models and start configuring. We support over 35 file formats including STL, OBJ, STEP, and ZIP.",
+    image: "/icons/upload-quote.webp",
   },
   {
-    title: "Instant Quote",
-    description: "Pricing and DfM in seconds.",
-    icon: CalculatorIcon,
+    title: "Start Production",
+    description:
+      "Choose your material, finish and color. Our network of certified manufacturers begins production immediately.",
+    image: "/icons/production.webp",
   },
   {
-    title: "Approve & Order",
-    description: "Confirm specs with one click.",
-    icon: CheckBadgeIcon,
+    title: "Track Your Order",
+    description:
+      "Monitor your parts through every stage of production with real-time updates and quality inspections.",
+    image: "/icons/tracking.webp",
   },
   {
-    title: "Smart Sourcing",
-    description: "Routed to the best partner.",
-    icon: CpuChipIcon,
-  },
-  {
-    title: "Quality Control",
-    description: "Rigorous part inspection.",
-    icon: BeakerIcon,
-  },
-  {
-    title: "Global Delivery",
-    description: "Doorstep delivery worldwide.",
-    icon: TruckIcon,
+    title: "Deliver the Parts",
+    description:
+      "Receive your precision-engineered parts at your doorstep with our fast and reliable global shipping.",
+    image: "/icons/shipping.webp",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="py-24 bg-white overflow-hidden border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 text-center mb-24">
-        <Typography
-          variant="small"
-          className="font-bold uppercase tracking-widest mb-3 text-blue-600"
-        >
-          Our Process
-        </Typography>
-        <Typography
-          variant="h2"
-          color="black"
-          className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
-        >
-          <span className="text-[#3b82f6]">How Frigate Fast Parts</span>{" "}
-          <span>Works</span>
-        </Typography>
-        <Typography className="text-gray-500 text-lg max-w-2xl mx-auto font-light">
-          A streamlined, six-step manufacturing workflow designed for maximum
-          speed and precision.
-        </Typography>
-      </div>
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_bottom,rgba(59,130,246,0.01)_0%,transparent_100%)]" />
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-50/20 rounded-full blur-[120px] animate-pulse" />
 
-      {/* Desktop View (Single Horizontal Row) */}
-      <div className="hidden lg:block relative w-full h-[350px]">
-        {/* SVG Straight Flow Animation - Centered exactly in the middle */}
-        <div className="absolute inset-0 flex items-center transform translate-y-[-40px]">
-          <svg
-            className="w-full pointer-events-none overflow-visible px-[10%]"
-            height="4"
-            viewBox="0 0 1000 4"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-24">
+          <Typography
+            variant="small"
+            className="font-bold uppercase tracking-widest mb-3 text-blue-600"
           >
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3b82f6" />
-                <stop offset="100%" stopColor="#2563eb" />
-              </linearGradient>
-            </defs>
-            
-            {/* Background Path */}
-            <line 
-              x1="0" y1="2" x2="1000" y2="2"
-              stroke="#e5e7eb" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-            />
-            
-            {/* Animated Path Overlay */}
-            <line 
-              x1="0" y1="2" x2="1000" y2="2"
-              className="animate-flow"
-              stroke="url(#lineGradient)" 
-              strokeWidth="4" 
-              strokeDasharray="20 15" 
-              strokeLinecap="round"
-            />
-          </svg>
+            How it works
+          </Typography>
+          <Typography
+            variant="h2"
+            color="black"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
+          >
+            <span className="text-[#3b82f6]">From Digital</span>{" "}
+            <span>to Physical</span>
+          </Typography>
+          <Typography className="text-gray-500 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+            A high-precision workflow engineered for the modern manufacturer.
+            From initial CAD upload to final global distribution.
+          </Typography>
         </div>
 
-        {/* Steps Wrapper */}
-        <div className="relative h-full px-[10%] grid grid-cols-6 gap-4">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={index}
-                className="relative flex flex-col items-center group pt-[135px]"
-              >
-                {/* 
-                  The center of the row is 175px (h-350 / 2).
-                  The icons are 80px tall.
-                  To center the icon on the line (which is also at ~middle):
-                */}
-                
-                {/* Circle - Positioned exactly centered on the line */}
-                <div className="absolute top-[135px] -translate-y-1/2 flex items-center justify-center">
-                   <div className="w-20 h-20 bg-white rounded-full border-4 border-white shadow-[0_10px_35px_-10px_rgba(59,130,246,0.3)] flex items-center justify-center z-20 group-hover:scale-115 group-hover:rotate-3 transition-all duration-500 relative">
-                     <div className="absolute inset-0 rounded-full ring-2 ring-blue-100 group-hover:ring-blue-400 group-hover:ring-4 transition-all duration-500" />
-                     <Icon className="w-10 h-10 text-[#2563eb] group-hover:scale-110 transition-transform" />
-                     
-                     {/* Step Number Badge */}
-                     <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-7 h-7 bg-blue-600 text-white rounded-full text-[11px] font-bold z-30 shadow-lg border-2 border-white">
-                       {index + 1}
-                     </div>
-                   </div>
-                </div>
+        {/* Technical Timeline Layout */}
+        <div className="relative">
+          {/* Vertical Core Line */}
+          <div className="absolute left-[30px] lg:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-blue-600 via-blue-100 to-transparent lg:-translate-x-1/2 hidden md:block" />
 
-                {/* Text Content - Always below the line/icons */}
-                <div className="mt-8 text-center flex flex-col items-center">
-                  <Typography color="black" className="font-extrabold text-[15px] mb-1.5 transition-colors group-hover:text-blue-600">
-                    {step.title}
-                  </Typography>
-                  <Typography className="text-gray-500 text-[12px] font-light leading-relaxed max-w-[150px]">
-                    {step.description}
-                  </Typography>
+          <div className="space-y-24">
+            {steps.map((step, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col md:flex-row items-center gap-12 lg:gap-24 relative ${
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Step Connector Node */}
+                  <div className="absolute left-[30px] lg:left-1/2 w-4 h-4 rounded-full border-4 border-white bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)] z-20 lg:-translate-x-1/2 hidden md:block" />
+
+                  {/* Content Module */}
+                  <div
+                    className={`w-full md:w-1/2 ${isEven ? "md:text-right" : "md:text-left"}`}
+                  >
+                    <div
+                      className={`inline-flex flex-col ${isEven ? "md:items-end" : "md:items-start"}`}
+                    >
+                      <div className="flex items-center gap-4 mb-4">
+                        {!isEven && (
+                          <div className="w-8 h-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600 font-bold text-sm">
+                            {index + 1}
+                          </div>
+                        )}
+
+                        {isEven && (
+                          <div className="w-8 h-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-600 font-bold text-sm">
+                            {index + 1}
+                          </div>
+                        )}
+                      </div>
+                      <Typography
+                        variant="h3"
+                        color="black"
+                        className="text-3xl font-extrabold mb-6 tracking-tight"
+                      >
+                        {step.title}
+                      </Typography>
+                      <Typography className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
+                        {step.description}
+                      </Typography>
+
+                      {index === 1 && (
+                        <Button
+                          variant="text"
+                          className="mt-6 flex items-center gap-2 text-blue-600 hover:bg-blue-50/50 p-2 -ml-2 group lowercase tracking-tighter"
+                        >
+                          Explore materials{" "}
+                          <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Visual Module (Glass Orb) */}
+                  <div className="w-full md:w-1/2 flex justify-center">
+                    <div className="relative group">
+                      {/* Technical Ornament */}
+                      <div className="absolute -inset-8 border border-gray-100 rounded-full opacity-50 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
+                      <div className="absolute -inset-4 border border-blue-50 rounded-full opacity-50 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
+
+                      {/* Glass Orb */}
+                      <div className="w-64 h-64 lg:w-80 lg:h-80 bg-white/40 backdrop-blur-3xl border border-white/80 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.03)] flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_40px_80px_rgba(59,130,246,0.1)] transition-all duration-700">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.08),transparent_70%)]" />
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          width={440}
+                          height={400}
+                          style={{ width: "auto", height: "auto" }}
+                          className="object-contain relative z-10 transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      {/* Mobile/Tablet View (Vertical List) */}
-      <div className="lg:hidden max-w-xl mx-auto flex flex-col gap-12 relative px-6">
-        <div className="absolute left-[59px] top-4 bottom-4 w-[2px] bg-blue-100 dashed-border" />
-        {steps.map((step, index) => {
-          const Icon = step.icon;
-          return (
-            <div key={index} className="flex gap-8 items-start relative z-10 group">
-              <div className="w-16 h-16 shrink-0 bg-white rounded-full border-2 border-blue-500 shadow-lg flex items-center justify-center transition-transform group-hover:scale-110">
-                <Icon className="w-8 h-8 text-blue-600" />
-              </div>
-              <div className="pt-2">
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="text-[10px] font-bold bg-blue-600 text-white w-5 h-5 rounded-full flex items-center justify-center">
-                    {index + 1}
-                  </span>
-                  <Typography variant="h5" color="black" className="font-bold">
-                    {step.title}
-                  </Typography>
-                </div>
-                <Typography className="text-gray-500 text-sm font-light max-w-sm">
-                  {step.description}
-                </Typography>
-              </div>
-            </div>
-          );
-        })}
+        {/* Global CTA */}
+        {/* <div className="mt-40 text-center">
+          <Button
+            size="lg"
+            className="rounded-full bg-black hover:bg-blue-600 text-white px-12 py-6 flex items-center gap-4 mx-auto shadow-2xl transition-all duration-500 hover:-translate-y-2"
+          >
+            <SparklesIcon className="w-6 h-6 text-blue-400" />
+            <span className="text-lg font-bold tracking-tight">
+              Configure Your Part Now
+            </span>
+            <ArrowRightIcon className="w-5 h-5" />
+          </Button>
+          <Typography className="mt-8 text-gray-400 text-sm font-mono tracking-widest uppercase">
+            Global Network Ready // Active Connection
+          </Typography>
+        </div> */}
       </div>
-      
-      <style>{`
-        @keyframes flow {
-          from { stroke-dashoffset: 70; }
-          to { stroke-dashoffset: 0; }
-        }
-        .animate-flow {
-          animation: flow 4s linear infinite;
-        }
-        .dashed-border {
-          background-image: linear-gradient(to bottom, #3b82f6 50%, rgba(255,255,255,0) 0%);
-          background-position: left;
-          background-size: 2px 20px;
-          background-repeat: repeat-y;
-        }
-      `}</style>
     </section>
   );
 }

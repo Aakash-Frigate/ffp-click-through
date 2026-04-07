@@ -206,7 +206,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       );
 
       const ringsData = data
-        .filter((d, i) => newNumbersOfRings.includes(i))
+        .filter((_, i) => newNumbersOfRings.includes(i))
         .map((d) => ({
           lat: d.startLat,
           lng: d.startLng,

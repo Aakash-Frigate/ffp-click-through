@@ -1,117 +1,45 @@
-// @ts-nocheck
-/* eslint-disable */
 "use client";
 
-import React from "react";
-import dynamic from "next/dynamic";
+import { WorldMap } from "./ui/world-map";
 import { Typography } from "@material-tailwind/react";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
-// Import the Globe dynamically to prevent SSR hydration errors with Three.js
-const World = dynamic(() => import("./globe").then((mod) => mod.World), {
-  ssr: false,
-});
-
 export function WorldWide() {
-  const globeConfig = {
-    pointSize: 9,
-    globeColor: "#ffffff",
-    showAtmosphere: true,
-    atmosphereColor: "#3b82f6",
-    atmosphereAltitude: 0.15,
-    emissive: "#ffffff",
-    emissiveIntensity: 0.2,
-    shininess: 1,
-    polygonColor: "rgba(30, 58, 138, 0.9)",
-    ambientLight: "#ffffff",
-    directionalLeftLight: "#ffffff",
-    directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
-    arcTime: 1000,
-    arcLength: 0.9,
-    rings: 1,
-    maxRings: 3,
-    initialPosition: { lat: 20, lng: 80 },
-    autoRotate: true,
-    autoRotateSpeed: 0.5,
-  };
-
-  const colors = ["#00f2ff", "#3b82f6", "#a855f7"];
-  const arcs = [
+  const dots = [
     // Trichy (India) to various global points
     {
-      order: 1,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: 39.8283,
-      endLng: -98.5795,
-      arcAlt: 0.5,
-      color: colors[0],
-    }, // USA
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: 39.8283, lng: -98.5795, label: "USA" },
+    },
     {
-      order: 2,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: 51.1657,
-      endLng: 10.4515,
-      arcAlt: 0.3,
-      color: colors[1],
-    }, // Germany
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: 51.1657, lng: 10.4515, label: "Germany" },
+    },
     {
-      order: 3,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: 35.6762,
-      endLng: 139.6503,
-      arcAlt: 0.4,
-      color: colors[2],
-    }, // Japan
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: 35.6762, lng: 139.6503, label: "Japan" },
+    },
     {
-      order: 4,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: -25.2744,
-      endLng: 133.7751,
-      arcAlt: 0.4,
-      color: colors[0],
-    }, // Australia
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: -25.2744, lng: 133.7751, label: "Australia" },
+    },
     {
-      order: 5,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: 25.2048,
-      endLng: 55.2708,
-      arcAlt: 0.2,
-      color: colors[1],
-    }, // Dubai
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: 25.2048, lng: 55.2708, label: "UAE (Dubai)" },
+    },
     {
-      order: 6,
-      startLat: 10.7905,
-      startLng: 78.7047,
-      endLat: -14.235,
-      endLng: -51.9253,
-      arcAlt: 0.6,
-      color: colors[2],
-    }, // Brazil
+      start: { lat: 10.7905, lng: 78.7047, label: "India" },
+      end: { lat: -14.235, lng: -51.9253, label: "Brazil" },
+    },
     // Additional networking nodes
     {
-      order: 7,
-      startLat: 39.8283,
-      startLng: -98.5795,
-      endLat: 51.5074,
-      endLng: -0.1278,
-      arcAlt: 0.4,
-      color: colors[0],
-    }, // USA to London
+      start: { lat: 39.8283, lng: -98.5795, label: "USA" },
+      end: { lat: 51.5074, lng: -0.1278, label: "UK (London)" },
+    },
     {
-      order: 8,
-      startLat: 51.1657,
-      startLng: 10.4515,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.4,
-      color: colors[1],
-    }, // Germany to HK
+      start: { lat: 51.1657, lng: 10.4515, label: "Germany" },
+      end: { lat: 22.3193, lng: 114.1694, label: "Hong Kong" },
+    },
   ];
 
   return (
@@ -120,7 +48,7 @@ export function WorldWide() {
       <div className="absolute top-0 right-[-20%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center mb-0 md:mb-10 lg:mb-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center mb-10 md:mb-16">
         <Typography
           variant="small"
           color="blue"
@@ -143,10 +71,10 @@ export function WorldWide() {
         </Typography>
       </div>
 
-      <div className="relative w-full max-w-4xl h-[400px] md:h-[600px] mx-auto z-20 flex items-center justify-center -mt-8 md:-mt-16">
-        <World globeConfig={globeConfig} data={arcs} />
-        {/* Fading overlay at bottom to gently blend the globe into the section */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="relative w-full max-w-5xl mx-auto z-20 px-6">
+        <WorldMap dots={dots} lineColor="#3b82f6" />
+        {/* Fading overlay at bottom for a smoother blend */}
+        <div className="absolute bottom-0 inset-x-0 h-20 pointer-events-none" />
       </div>
 
       {/* Statistics Block */}
