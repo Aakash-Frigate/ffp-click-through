@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import {
   ShieldCheckIcon as Shield,
@@ -8,44 +7,7 @@ import {
   EnvelopeIcon as Mail,
   PhoneIcon as Phone,
 } from "@heroicons/react/24/outline";
-
-export const SocialLinks = {
-  YoutubeFFP:
-    "https://www.youtube.com/@frigatemanufacturing?utm_source=ffp&utm_medium=ffp&utm_campaign=ffp",
-  LinkedinFFP:
-    "https://www.linkedin.com/company/frigates/posts/?utm_source=ffp&utm_medium=ffp&utm_campaign=ffp",
-  XFFP: "https://x.com/Frigateindia/?utm_source=ffp&utm_medium=ffp&utm_campaign=ffp",
-  FrigateOfficialSiteFFP:
-    "https://frigate.ai/?utm_source=ffp&utm_medium=ffp&utm_campaign=ffp",
-};
-
-const services = [
-  { label: "Heavy Engineering", href: "https://frigate.co.in/" },
-  {
-    label: "Casting",
-    href: "https://frigate.ai/capabilities/casting-services/",
-  },
-  {
-    label: "CNC Machining",
-    href: "https://frigate.ai/capabilities/cnc-machining-services/",
-  },
-  {
-    label: "Sheet Metal Fabrication",
-    href: "https://frigate.ai/capabilities/sheet-metal-fabrication-services/",
-  },
-  {
-    label: "Forging",
-    href: "https://frigate.ai/capabilities/forging-services/",
-  },
-  {
-    label: "Injection Molding",
-    href: "https://frigate.ai/capabilities/injection-molding-services/",
-  },
-  {
-    label: "Stamping",
-    href: "https://frigate.ai/capabilities/stamping-services/",
-  },
-];
+import { services, SocialLinks } from "@/lib/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -230,7 +192,7 @@ const Footer = () => {
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-start gap-3"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-blue-50/50 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-blue-600 shadow-sm border border-blue-100/30">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50/50 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 text-blue-600 shadow-sm border border-blue-100/30">
                     <Mail className="w-3 h-3" />
                   </div>
                   <div className="space-y-0">
@@ -248,7 +210,7 @@ const Footer = () => {
                   href={`tel:${contactInfo.phone.replace(/\s+/g, "")}`}
                   className="flex items-start gap-3"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-emerald-50/50 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 text-emerald-600 shadow-sm border border-emerald-100/30">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-50/50 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 text-emerald-600 shadow-sm border border-emerald-100/30">
                     <Phone className="w-3 h-3" />
                   </div>
                   <div className="space-y-0">
@@ -270,8 +232,8 @@ const Footer = () => {
       {/* Premium Dark Bottom Bar with Glow Blobs */}
       <div className="bg-[#0B0F1A] text-white py-6 relative z-10 border-t border-slate-900/50 overflow-hidden">
         {/* Decorative Glow Blobs */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/[0.05] rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/[0.03] rounded-full blur-[60px] -ml-24 -mb-24 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/3 rounded-full blur-[60px] -ml-24 -mb-24 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -326,7 +288,7 @@ const Footer = () => {
       </div>
 
       {/* Subtle Bottom Accent */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-200/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-200/40 to-transparent" />
     </footer>
   );
 };

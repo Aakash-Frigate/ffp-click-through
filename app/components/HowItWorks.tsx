@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Typography, Button } from "@material-tailwind/react";
+import { Typography, Button } from "@/app/components/ui/custom-components";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const steps = [
@@ -54,7 +54,7 @@ export function HowItWorks() {
             <span className="text-[#3b82f6]">From Digital</span>{" "}
             <span>to Physical</span>
           </Typography>
-          <Typography className="text-gray-500 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+          <Typography className="text-gray-600 text-lg max-w-2xl mx-auto font-normal leading-relaxed">
             A high-precision workflow engineered for the modern manufacturer.
             From initial CAD upload to final global distribution.
           </Typography>
@@ -105,7 +105,7 @@ export function HowItWorks() {
                       >
                         {step.title}
                       </Typography>
-                      <Typography className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
+                      <Typography className="text-gray-700 text-lg font-normal leading-relaxed max-w-md">
                         {step.description}
                       </Typography>
 
@@ -129,7 +129,7 @@ export function HowItWorks() {
                       <div className="absolute -inset-4 border border-blue-50 rounded-full opacity-50 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
 
                       {/* Glass Orb */}
-                      <div className="w-64 h-64 lg:w-80 lg:h-80 bg-white/40 backdrop-blur-3xl border border-white/80 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.03)] flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_40px_80px_rgba(59,130,246,0.1)] transition-all duration-700">
+                      <div className="w-64 h-64 lg:w-80 lg:h-80 bg-white/70 backdrop-blur-3xl border border-blue-50 rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.05)] flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_40px_80px_rgba(59,130,246,0.12)] transition-all duration-700">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.08),transparent_70%)]" />
                         <Image
                           src={step.image}

@@ -98,7 +98,7 @@ export function ManufacturingServices() {
   const activeService = services.find((s) => s.id === activeTab) || services[0];
 
   return (
-    <section className="py-24 bg-gray-50/30 relative">
+    <section className="py-24 bg-gray-50/50 relative border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <Typography
@@ -116,7 +116,7 @@ export function ManufacturingServices() {
             <span className="text-[#3b82f6]">Our Manufacturing</span>{" "}
             <span>Services</span>
           </Typography>
-          <Typography className="text-gray-500 text-base md:text-lg mt-4 max-w-2xl mx-auto font-light">
+          <Typography className="text-gray-600 text-base md:text-lg mt-4 max-w-2xl mx-auto font-normal">
             Comprehensive production technologies designed to move your ideas
             from rapid prototyping straight into full-scale global
             manufacturing.
@@ -155,7 +155,7 @@ export function ManufacturingServices() {
             >
               {activeService.title}
             </Typography>
-            <Typography className="text-gray-600 leading-relaxed font-light text-[15px]">
+            <Typography className="text-gray-700 leading-relaxed font-normal text-[15px]">
               {activeService.description}
             </Typography>
             {/* @ts-expect-error Material Tailwind React 19 typings issue */}

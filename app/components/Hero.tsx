@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Button, Typography } from "@material-tailwind/react";
+import { Button, Typography } from "@/app/components/ui/custom-components";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
 
@@ -9,9 +8,9 @@ export function Hero() {
   return (
     <section className="relative w-full bg-white pt-32 pb-24 px-6 overflow-hidden min-h-[80vh] flex flex-col justify-center border-b border-gray-100">
       {/* Abstract Background Enhancements */}
-      <div className="absolute top-0 inset-x-0 h-[500px] bg-linear-to-b from-blue-50/50 to-transparent pointer-events-none" />
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-50/40 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-linear-to-b from-blue-50/30 to-transparent pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-50/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-50/20 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
         {/* Main Headline */}
@@ -27,7 +26,7 @@ export function Hero() {
         {/* Subtitle */}
         <Typography
           variant="lead"
-          className="text-gray-600 font-normal max-w-3xl mx-auto mb-10 text-lg md:text-xl"
+          className="text-gray-700 font-normal max-w-3xl mx-auto mb-10 text-lg md:text-xl"
         >
           The{" "}
           <span className="font-semibold text-blue-gray-900">
@@ -41,7 +40,6 @@ export function Hero() {
         </Typography>
 
         {/* CTA Button */}
-        {/* @ts-expect-error Material Tailwind React 19 typings issue */}
         <Button
           size="lg"
           color="blue"
@@ -68,7 +66,7 @@ export function Hero() {
 
         {/* Legal / Security Text */}
         <div className="text-xs text-gray-500 font-light flex flex-col items-center gap-3">
-          <p className="max-w-2xl leading-relaxed text-gray-400">
+          <p className="max-w-2xl leading-relaxed text-gray-500">
             Frigate Fast Parts Instant Quoting Engine® is the fastest way to
             procure custom CNC & Sheet Metal components. Start instantly by
             dropping your 3D models.

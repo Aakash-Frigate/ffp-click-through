@@ -1,44 +1,39 @@
 "use client";
 
 import { WorldMap } from "./ui/world-map";
-import { Typography } from "@material-tailwind/react";
+import { Typography } from "@/app/components/ui/custom-components";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 export function WorldWide() {
   const dots = [
     // Trichy (India) to various global points
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: 39.8283, lng: -98.5795, label: "USA" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: 39.8283, lng: -105.5795, label: "USA" },
     },
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: 51.1657, lng: 10.4515, label: "Germany" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: 45.1657, lng: 12.4515, label: "Germany" },
     },
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: 35.6762, lng: 139.6503, label: "Japan" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: 48.1657, lng: -2.4515, label: "UK" },
     },
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: -25.2744, lng: 133.7751, label: "Australia" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: 29.6762, lng: 150.6503, label: "Japan" },
     },
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: 25.2048, lng: 55.2708, label: "UAE (Dubai)" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: -45.2744, lng: 140.7751, label: "Australia" },
     },
     {
-      start: { lat: 10.7905, lng: 78.7047, label: "India" },
-      end: { lat: -14.235, lng: -51.9253, label: "Brazil" },
-    },
-    // Additional networking nodes
-    {
-      start: { lat: 39.8283, lng: -98.5795, label: "USA" },
-      end: { lat: 51.5074, lng: -0.1278, label: "UK (London)" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: 7.2048, lng: 57.2708, label: "UAE (Dubai)" },
     },
     {
-      start: { lat: 51.1657, lng: 10.4515, label: "Germany" },
-      end: { lat: 22.3193, lng: 114.1694, label: "Hong Kong" },
+      start: { lat: -5.7905, lng: 82.7047, label: "India" },
+      end: { lat: -30.235, lng: -55.9253, label: "Brazil" },
     },
   ];
 
@@ -64,7 +59,7 @@ export function WorldWide() {
           <span className="text-[#3b82f6]">Trusted by Innovators</span>{" "}
           <span>Worldwide</span>
         </Typography>
-        <Typography className="text-gray-600 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+        <Typography className="text-gray-700 text-lg max-w-2xl mx-auto font-normal leading-relaxed">
           Headquartered in India with operations expanding globally. We
           seamlessly deliver high-precision manufacturing hardware to partners
           across North America, Europe, Asia, and beyond.
@@ -83,13 +78,13 @@ export function WorldWide() {
           <span className="text-3xl font-bold text-black mb-1 tracking-tight">
             USA & UAE
           </span>
-          <span className="text-sm font-light text-gray-500">Global Hubs</span>
+          <span className="text-sm font-normal text-gray-600">Global Hubs</span>
         </div>
         <div className="flex flex-col items-center">
           <span className="text-3xl font-bold text-black mb-1 tracking-tight">
             2,000+
           </span>
-          <span className="text-sm font-light text-gray-500">
+          <span className="text-sm font-normal text-gray-600">
             Manufacturing Partners
           </span>
         </div>
@@ -97,7 +92,7 @@ export function WorldWide() {
           <span className="text-3xl font-bold text-black mb-1 tracking-tight">
             500k+
           </span>
-          <span className="text-sm font-light text-gray-500">
+          <span className="text-sm font-normal text-gray-600">
             Parts Delivered
           </span>
         </div>

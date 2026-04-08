@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Button, Typography } from "@material-tailwind/react";
+import { Button, Typography } from "@/app/components/ui/custom-components";
 
 const allLogos = [
   "https://frigate.ai/wp-content/uploads/2025/12/Sun-Stream-global-technologies.png",
@@ -56,7 +55,7 @@ export function TrustedBy() {
                   <img
                     src={logo}
                     alt="Partner"
-                    className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    className="w-full h-full object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -64,8 +63,8 @@ export function TrustedBy() {
             </div>
           ))}
           {/* Vertical fading masks to blend logos into the section */}
-          <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-32 bg-linear-to-b from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-linear-to-t from-white to-transparent z-10 pointer-events-none" />
         </div>
 
         {/* Right Section: Fixed Info */}
@@ -76,7 +75,7 @@ export function TrustedBy() {
               color="blue"
               className="font-bold uppercase tracking-widest flex items-center gap-2"
             >
-              <span className="w-8 h-[1px] bg-blue-600" />
+              <span className="w-8 h-px bg-blue-600" />
               Trusted Partnerships
             </Typography>
             <Typography
@@ -89,7 +88,7 @@ export function TrustedBy() {
               </span>{" "}
               <span>with the world&apos;s most influential companies.</span>
             </Typography>
-            <Typography className="text-gray-600 text-lg font-light leading-relaxed max-w-xl">
+            <Typography className="text-gray-700 text-lg font-normal leading-relaxed max-w-xl">
               Collaborating with enterprises and startups alike to push
               boundaries, disrupt markets, and achieve groundbreaking results.
               We scale with your ambition.
@@ -97,14 +96,12 @@ export function TrustedBy() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            {/* @ts-expect-error Material Tailwind React 19 typings issue */}
             <Button
               size="lg"
               className="rounded-full bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 px-10 py-4 text-sm capitalize transition-all hover:-translate-y-1 active:scale-95"
             >
               Explore Partnerships
             </Button>
-            {/* @ts-expect-error Material Tailwind React 19 typings issue */}
             <Button
               variant="text"
               color="blue"

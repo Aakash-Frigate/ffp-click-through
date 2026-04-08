@@ -1,80 +1,202 @@
 "use client";
 
-import React from "react";
-import { Button, Typography } from "@material-tailwind/react";
-import { ArrowUpTrayIcon, ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import {
+  Typography,
+  Button,
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@/app/components/ui/custom-components";
+import {
+  CloudArrowUpIcon,
+  DocumentArrowUpIcon,
+  ChatBubbleBottomCenterTextIcon,
+} from "@heroicons/react/24/outline";
+
+const DropZone = ({ type }: { type: string }) => {
+  const onDrop = useCallback((_acceptedFiles: File[]) => {}, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  return (
+    <div
+      {...getRootProps()}
+      className={`group relative flex flex-col items-center justify-center p-12 rounded-4xl border-2 border-dashed transition-all duration-700 cursor-pointer
+        ${
+          isDragActive
+            ? "border-blue-500 bg-blue-50/50 scale-[1.01]"
+            : "bg-white/40 backdrop-blur-xl border-blue-200 hover:bg-white hover:shadow-[0_40px_80px_rgba(59,130,246,0.1)]"
+        }`}
+    >
+      <input {...getInputProps()} />
+
+      <div className="absolute top-8 right-8 flex items-center gap-2 opacity-50">
+        <div className="w-1 h-1 rounded-full bg-blue-600/20 group-hover:bg-blue-600 transition-colors" />
+        <div className="h-px w-12 bg-linear-to-r from-blue-100/50 to-transparent" />
+      </div>
+
+      <div
+        className={`mb-6 p-6 rounded-3xl transition-all duration-700 ${isDragActive ? "bg-blue-600 text-white shadow-xl shadow-blue-600/30" : "bg-white text-blue-600 shadow-sm shadow-blue-100 group-hover:bg-blue-50"}`}
+      >
+        {type === "prototype" ? (
+          <DocumentArrowUpIcon className="w-10 h-10" />
+        ) : (
+          <CloudArrowUpIcon className="w-10 h-10" />
+        )}
+      </div>
+
+      <Typography
+        variant="h4"
+        color="black"
+        className="text-xl font-bold mb-2 tracking-tight group-hover:text-blue-600 transition-colors"
+      >
+        {type === "prototype"
+          ? "Upload Prototype Design"
+          : "Upload Production Batch"}
+      </Typography>
+      <Typography className="text-gray-600 text-sm font-normal max-w-sm text-center">
+        Drop your STEP, STP, or STL files here to receive an instant engineering
+        review and quote.
+      </Typography>
+    </div>
+  );
+};
 
 export function FinalCTA() {
+  const [activeTab, setActiveTab] = useState("prototype");
+
   return (
-    <section className="py-24 bg-white relative overflow-hidden flex flex-col items-center shrink-0">
-      {/* Liquid Glass Background Effect */}
-      <div className="max-w-7xl mx-auto px-6 relative w-full">
-        <div className="relative p-12 md:p-24 rounded-3xl bg-blue-600/10 border border-blue-100 overflow-hidden text-center group transition-all duration-700 hover:bg-blue-600/15">
-          {/* Animated Background Blobs */}
-          <div className="absolute top-[-20%] left-[-10%] w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[100px] pointer-events-none group-hover:scale-110 transition-transform duration-700" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[350px] h-[350px] bg-indigo-200/40 rounded-full blur-[100px] pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+    <section className="py-32 bg-white relative overflow-hidden flex flex-col items-center shrink-0">
+      {/* Dynamic Background Effects */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-50/40 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-indigo-50/30 rounded-full blur-[120px] pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl mx-auto space-y-10">
-            <div className="space-y-4">
-              <Typography
-                variant="small"
-                placeholder=""
-                className="font-bold uppercase tracking-widest text-[#3b82f6] shadow-sm bg-white/50 w-fit mx-auto px-4 py-1.5 rounded-full"
-              >
-                Ready to Get Started?
-              </Typography>
-              <Typography
-                placeholder=""
-                variant="h2"
-                color="black"
-                className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight"
-              >
-                <span className="text-[#3b82f6]">Accelerate Your</span>{" "}
-                <span>Product Lifecycle</span>
-              </Typography>
-              <Typography placeholder="" className="text-gray-600 text-lg md:text-xl font-light leading-relaxed">
-                Join 500+ innovators who trust Frigate for precision manufacturing 
-                delivered globally. From prototype to production, we scale with you.
-              </Typography>
-            </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div className="relative p-12 md:p-20 rounded-[3rem] bg-blue-50/60 border border-blue-200/50 backdrop-blur-md shadow-[0_10px_60px_rgba(0,0,0,0.04)] overflow-hidden">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <Typography
+              variant="small"
+              className="font-bold uppercase tracking-[0.3em] mb-4 text-blue-600 bg-white/50 w-fit mx-auto px-4 py-1.5 rounded-full"
+            >
+              Ready to Accelerate?
+            </Typography>
+            <Typography
+              variant="h2"
+              color="black"
+              className="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 leading-tight"
+            >
+              Start Your <span className="text-blue-600">Product Journey</span>
+            </Typography>
+            <Typography className="text-gray-700 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
+              Upload your CAD files today and experience manufacturing that is
+              faster, smarter, and fully transparent. From prototype to
+              production.
+            </Typography>
+          </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-              {/* @ts-expect-error Material Tailwind React 19 typings issue */}
-              <Button
-                size="lg"
-                color="blue"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-full bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 hover:scale-105 transition-all text-sm px-10 py-5"
-              >
-                <ArrowUpTrayIcon className="w-5 h-5 text-white" strokeWidth={2.5} />
-                Upload CAD for Instant Quote
-              </Button>
-              {/* @ts-expect-error Material Tailwind React 19 typings issue */}
-              <Button
-                variant="text"
-                color="blue"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-full hover:bg-white text-blue-700 border border-blue-100 hover:border-blue-200 shadow-none px-10 py-5 text-sm transition-all"
-              >
-                <ChatBubbleBottomCenterTextIcon className="w-5 h-5" strokeWidth={2.5} />
-                Talk to an Expert
-              </Button>
-            </div>
+          <div className="max-w-4xl mx-auto">
+            <Tabs value={activeTab} onChange={(val: any) => setActiveTab(val)}>
+              <div className="flex justify-center mb-8">
+                <TabsHeader
+                  className="bg-white/60 backdrop-blur-md p-1.5 rounded-full border border-blue-50 min-w-[320px] shadow-sm"
+                  indicatorProps={{
+                    className:
+                      "bg-white shadow-[0_8px_30px_rgba(59,130,246,0.12)] rounded-full border border-blue-50",
+                  }}
+                >
+                  <Tab
+                    value="prototype"
+                    className={`py-3 transition-all duration-500 font-bold tracking-tight text-sm
+                      ${activeTab === "prototype" ? "text-blue-600" : "text-gray-400 hover:text-gray-600"}
+                    `}
+                  >
+                    PROTOTYPE
+                  </Tab>
+                  <Tab
+                    value="production"
+                    className={`py-3 transition-all duration-500 font-bold tracking-tight text-sm
+                      ${activeTab === "production" ? "text-blue-600" : "text-gray-400 hover:text-gray-600"}
+                    `}
+                  >
+                    PRODUCTION
+                  </Tab>
+                </TabsHeader>
+              </div>
 
-            <div className="text-[11px] text-gray-500 font-medium tracking-wide uppercase pt-10 flex items-center justify-center gap-8 border-t border-blue-200/30">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full" /> 
-                ISO 9001:2015 Certified
-              </span>
-              <span className="hidden sm:inline-block w-px h-4 bg-blue-200" />
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full" /> 
-                100% NDA Protected
-              </span>
-              <span className="hidden sm:inline-block w-px h-4 bg-blue-200" />
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-indigo-500 rounded-full" /> 
-                Global Shipping
-              </span>
-            </div>
+              <TabsBody
+                animate={{
+                  initial: { y: 20, opacity: 0 },
+                  mount: { y: 0, opacity: 1 },
+                  unmount: { y: 20, opacity: 0 },
+                }}
+              >
+                <TabPanel value="prototype">
+                  <div className="grid md:grid-cols-12 gap-10 items-center">
+                    <div className="md:col-span-4 text-left">
+                      <div className="px-3 py-1 w-fit rounded-full bg-blue-50 border border-blue-100 text-[9px] font-black text-blue-600 uppercase tracking-widest mb-6">
+                        TIER 1 • 1 - 500 PCS
+                      </div>
+                      <Typography
+                        variant="h4"
+                        color="black"
+                        className="text-2xl font-bold mb-4 tracking-tight"
+                      >
+                        Rapid Testing
+                      </Typography>
+                      <Typography className="text-gray-700 text-[15px] font-normal leading-relaxed mb-8">
+                        Get your functional parts in record time. Perfect for
+                        R&D cycles and engineering validation.
+                      </Typography>
+                      <Button
+                        variant="text"
+                        color="blue"
+                        className="flex items-center gap-2 p-0 normal-case font-bold hover:bg-transparent text-blue-600 hover:text-blue-700"
+                      >
+                        <ChatBubbleBottomCenterTextIcon className="w-5 h-5" />
+                        Talk to an Expert
+                      </Button>
+                    </div>
+                    <div className="md:col-span-8">
+                      <DropZone type="prototype" />
+                    </div>
+                  </div>
+                </TabPanel>
+                <TabPanel value="production">
+                  <div className="grid md:grid-cols-12 gap-10 items-center">
+                    <div className="md:col-span-4 text-left">
+                      <div className="px-3 py-1 w-fit rounded-full bg-blue-50 border border-blue-100 text-[9px] font-black text-blue-600 uppercase tracking-widest mb-6">
+                        TIER 2 • 500+ PCS
+                      </div>
+                      <Typography
+                        variant="h4"
+                        color="black"
+                        className="text-2xl font-bold mb-4 tracking-tight"
+                      >
+                        Mass Production
+                      </Typography>
+                      <Typography className="text-gray-700 text-[15px] font-normal leading-relaxed mb-8">
+                        Scale your manufacturing with global-ready quality
+                        control and optimized unit pricing.
+                      </Typography>
+                      <Button
+                        variant="text"
+                        color="blue"
+                        className="flex items-center gap-2 p-0 normal-case font-bold hover:bg-transparent text-blue-600 hover:text-blue-700"
+                      >
+                        <ChatBubbleBottomCenterTextIcon className="w-5 h-5" />
+                        Talk to an Expert
+                      </Button>
+                    </div>
+                    <div className="md:col-span-8">
+                      <DropZone type="production" />
+                    </div>
+                  </div>
+                </TabPanel>
+              </TabsBody>
+            </Tabs>
           </div>
         </div>
       </div>
