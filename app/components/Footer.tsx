@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ShieldCheckIcon as Shield,
   ChevronRightIcon as ChevronRight,
@@ -38,10 +39,11 @@ const Footer = () => {
               href="/"
               className="inline-block transition-all duration-300 hover:scale-105"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="https://frigate.ai/wp-content/uploads/2025/03/FastParts-logo-1024x351.png"
                 alt="FastParts"
+                width={200}
+                height={70}
                 className="h-10 w-auto object-contain"
               />
             </Link>
@@ -263,10 +265,11 @@ const Footer = () => {
                 <span className="text-[9px] text-slate-600 font-extrabold uppercase tracking-[0.4em] mb-1 group-hover:text-blue-500 transition-colors duration-500">
                   Developed by
                 </span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="https://frigate.ai/wp-content/uploads/2024/03/frigate_whitelogo.svg"
                   alt="Frigate Engineering Services"
+                  width={120}
+                  height={24}
                   className="h-6 w-auto mx-auto opacity-80 brightness-110 transition-all group-hover:opacity-100 group-hover:scale-105"
                 />
               </div>

@@ -9,10 +9,12 @@ import { TrustedBy } from "./components/TrustedBy";
 import { HowItWorks } from "./components/HowItWorks";
 import { Benefits } from "./components/Benefits";
 import { FinalCTA } from "./components/FinalCTA";
+import { Toaster } from "react-hot-toast";
 
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <Toaster />
       <Header />
       <main className="flex flex-1 flex-col">
         <Hero />

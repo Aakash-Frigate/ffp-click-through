@@ -3,6 +3,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   Collapse,
   List,
@@ -47,11 +48,13 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           <a href="#" className="mr-4 cursor-pointer py-1.5">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://frigate.ai/wp-content/uploads/2025/03/FastParts-logo-1024x351.png"
               alt="FastParts Logo"
+              width={160}
+              height={55}
               className="h-8 w-auto object-contain"
+              priority
             />
           </a>
           <div className="hidden lg:block">

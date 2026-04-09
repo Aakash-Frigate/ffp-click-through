@@ -15,11 +15,61 @@ import {
   CloudArrowUpIcon,
   DocumentArrowUpIcon,
   ChatBubbleBottomCenterTextIcon,
+  ArrowPathIcon,
 } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { CAD_MIME_MAP } from "@/lib/constants";
+import { toast } from "react-hot-toast";
 
 const DropZone = ({ type }: { type: string }) => {
-  const onDrop = useCallback((_acceptedFiles: File[]) => {}, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const [isUploading, setIsUploading] = useState(false);
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    if (acceptedFiles.length === 0) return;
+
+    setIsUploading(true);
+    const toastId = toast.loading(
+      "Preparing your files for engineering review...",
+    );
+
+    try {
+      const formData = new FormData();
+      acceptedFiles.forEach((file) => {
+        formData.append("files", file);
+      });
+
+      const url = process.env.NEXT_PUBLIC_FFP_BACKEND_URL!;
+      const frontUrl = process.env.NEXT_PUBLIC_FFP_URL!;
+      const response = await axios.post(`${url}/files/bulk`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (response.data?.uploadId) {
+        toast.success("Ready! Redirecting to your instant quote...", {
+          id: toastId,
+        });
+        window.open(
+          `${frontUrl}/instant-quote?uploadId=${response.data.uploadId}`,
+          "_blank",
+        );
+      } else {
+        toast.error("Something went wrong. Please try again.", { id: toastId });
+      }
+    } catch (error) {
+      console.error("Widget upload error: ", error);
+      toast.error("Upload failed. Please check your connection.", {
+        id: toastId,
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: CAD_MIME_MAP,
+    disabled: isUploading,
+  });
 
   return (
     <div
@@ -29,7 +79,7 @@ const DropZone = ({ type }: { type: string }) => {
           isDragActive
             ? "border-blue-500 bg-blue-50/50 scale-[1.01]"
             : "bg-white/40 backdrop-blur-xl border-blue-200 hover:bg-white hover:shadow-[0_40px_80px_rgba(59,130,246,0.1)]"
-        }`}
+        } ${isUploading ? "opacity-60 cursor-not-allowed pointer-events-none" : ""}`}
     >
       <input {...getInputProps()} />
 
@@ -41,7 +91,9 @@ const DropZone = ({ type }: { type: string }) => {
       <div
         className={`mb-6 p-6 rounded-3xl transition-all duration-700 ${isDragActive ? "bg-blue-600 text-white shadow-xl shadow-blue-600/30" : "bg-white text-blue-600 shadow-sm shadow-blue-100 group-hover:bg-blue-50"}`}
       >
-        {type === "prototype" ? (
+        {isUploading ? (
+          <ArrowPathIcon className="w-10 h-10 animate-spin" />
+        ) : type === "prototype" ? (
           <DocumentArrowUpIcon className="w-10 h-10" />
         ) : (
           <CloudArrowUpIcon className="w-10 h-10" />

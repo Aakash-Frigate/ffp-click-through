@@ -1,27 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { Button, Typography } from "@/app/components/ui/custom-components";
-
-const allLogos = [
-  "https://frigate.ai/wp-content/uploads/2025/12/Sun-Stream-global-technologies.png",
-  "https://frigate.ai/wp-content/uploads/2025/10/2.png",
-  "https://frigate.ai/wp-content/uploads/2025/12/Schuco.png",
-  "https://frigate.ai/wp-content/uploads/2025/12/Reakube.png",
-  "https://frigate.ai/wp-content/uploads/2024/03/client-logoAsset-3.png",
-  "https://frigate.ai/wp-content/uploads/2024/07/MRG-logo-img-150x150.png",
-  "https://frigate.ai/wp-content/uploads/2024/07/Indian-oil-logo-150x150.png",
-  "https://frigate.ai/wp-content/uploads/2024/04/Reliance-1-150x90.png",
-  "https://frigate.ai/wp-content/uploads/2024/04/TATA-1-1-150x90.png",
-  "https://frigate.ai/wp-content/uploads/2025/10/1.png",
-  "https://logo.clearbit.com/sony.com",
-  "https://logo.clearbit.com/mercedes-benz.com",
-  "https://logo.clearbit.com/ford.com",
-  "https://logo.clearbit.com/nike.com",
-  "https://logo.clearbit.com/adidas.com",
-  "https://logo.clearbit.com/netflix.com",
-  "https://logo.clearbit.com/spotify.com",
-  "https://logo.clearbit.com/slack.com",
-];
+import { allLogos } from "@/lib/constants";
 
 const columns = [
   [...allLogos.slice(0, 6), ...allLogos.slice(0, 6)],
@@ -51,12 +32,12 @@ export function TrustedBy() {
                   key={logoIdx}
                   className="w-full aspect-square bg-white rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center p-6 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-500 group"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={logo}
                     alt="Partner"
+                    width={100}
+                    height={100}
                     className="w-full h-full object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                    loading="lazy"
                   />
                 </div>
               ))}
