@@ -6,7 +6,6 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 export function WorldWide() {
   const dots = [
-    // Trichy (India) to various global points
     {
       start: { lat: -5.7905, lng: 82.7047, label: "India" },
       end: { lat: 39.8283, lng: -105.5795, label: "USA" },

@@ -16,6 +16,12 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
+# Set build-time environment variables for Next.js
+ARG NEXT_PUBLIC_FFP_BACKEND_URL
+ARG NEXT_PUBLIC_FFP_URL
+ENV NEXT_PUBLIC_FFP_BACKEND_URL=$NEXT_PUBLIC_FFP_BACKEND_URL
+ENV NEXT_PUBLIC_FFP_URL=$NEXT_PUBLIC_FFP_URL
+
 # Build the project
 RUN pnpm build
 
