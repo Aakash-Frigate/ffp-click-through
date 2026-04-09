@@ -9,9 +9,7 @@ import countries from "@/app/data/globe.json";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: ThreeElements["mesh"] & {
-      new (): ThreeGlobe;
-    };
+    threeGlobe: any;
   }
 }
 
@@ -64,7 +62,7 @@ interface WorldProps {
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globe, setGlobe] = useState<ThreeGlobe | null>(null);
-  const groupRef = useRef();
+  const groupRef = useRef<any>(null);
 
   const defaultProps = {
     pointSize: 1,
@@ -223,7 +221,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   return (
     <group ref={groupRef}>
-      <threeGlobe ref={setGlobe} />
+      <threeGlobe ref={(node: ThreeGlobe) => setGlobe(node)} />
     </group>
   );
 }

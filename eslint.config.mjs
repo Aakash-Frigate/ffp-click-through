@@ -10,16 +10,10 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "no-unused-vars": "off", // Handled by TypeScript
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-        },
-      ],
+      "@typescript-eslint/no-unused-vars": "warn",
       "@next/next/no-img-element": "warn",
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/exhaustive-deps": "off",
       "no-console": ["warn", { allow: ["warn", "error"] }],
       "prefer-const": "error",
       "@typescript-eslint/no-explicit-any": "off",

@@ -17,7 +17,7 @@ import { capabilitiesData } from "@/lib/constants";
 export default function CapabilitiesMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const [activeTab, setActiveTab] = useState("cncMachining");
+  const [activeTab, setActiveTab] = useState<keyof typeof capabilitiesData>("cncMachining");
 
   const renderItems = (
     <div className="flex w-full max-w-5xl rounded-xl p-2 outline-none">
