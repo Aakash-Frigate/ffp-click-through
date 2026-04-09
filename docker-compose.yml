@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: https://github.com/Aakash-Frigate/ffp-click-through#main
+      dockerfile: Dockerfile
+
+    container_name: ffp-landing
+
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      NEXT_PUBLIC_FFP_BACKEND_URL: "https://ffp-api.frigate.ai"
+      NEXT_PUBLIC_FFP_URL: "https://ffp.frigate.ai"
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ffp-web.rule=Host(`ffp.frigate.ai`)"
+      - "traefik.http.routers.ffp-web.entrypoints=websecure"
+      - "traefik.http.routers.ffp-web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.ffp-web.loadbalancer.server.port=3000"
+
+    networks:
+      - dokploy-network
+
+    restart: unless-stopped
+
+networks:
+  dokploy-network:
+    external: true
