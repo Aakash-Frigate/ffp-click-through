@@ -8,6 +8,7 @@ import { WorldWide } from "./components/WorldWide";
 import { TrustedBy } from "./components/TrustedBy";
 import { HowItWorks } from "./components/HowItWorks";
 import { Benefits } from "./components/Benefits";
+import { MaterialComparison } from "./components/MaterialComparison";
 import { FinalCTA } from "./components/FinalCTA";
 import { Toaster } from "react-hot-toast";
 
@@ -21,7 +22,9 @@ const Home = () => {
         <ManufacturingServices />
         <HowItWorks />
         <Benefits />
+        <MaterialComparison />
         <TrustedBy />
+
         <WorldWide />
         <FinalCTA />
       </main>
