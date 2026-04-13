@@ -1,14 +1,53 @@
 "use client";
 
-import { Button, Typography } from "@/app/components/ui/custom-components";
-import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { Typography } from "@/app/components/ui/custom-components";
 import { CheckCircleIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
 
 import { QuoteUpload } from "./QuoteUpload";
 
+const bgImages = [
+  "https://frigate.ai/wp-content/uploads/2024/07/Robotics-IMG-2.png",
+  "https://frigate.ai/wp-content/uploads/2024/07/Consumer-Products-IMG-3.png",
+  "https://frigate.ai/wp-content/uploads/2024/05/Aerospace-IMG-5.png",
+];
+
 export function Hero() {
+  const [emblaRef] = useEmblaCarousel({ loop: true, duration: 60 }, [
+    Autoplay({
+      delay: 5000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+    }),
+  ]);
+
   return (
-    <section className="relative w-full bg-white pt-28 pb-24 px-6 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-slate-100">
+    <section className="relative w-full bg-white px-6 overflow-hidden min-h-[90vh] flex flex-col justify-center border-b border-slate-100">
+      {/* Carousel Background Image (Full Width) - Bleeds to edges */}
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        ref={emblaRef}
+      >
+        <div className="flex h-full w-full">
+          {bgImages.map((src, index) => (
+            <div key={src} className="relative flex-[0_0_100%] min-w-0 h-full">
+              <Image
+                src={src}
+                alt={`Background ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+        {/* Liquid glass effect overlays */}
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-[1px] z-10" />
+        <div className="absolute inset-0 bg-linear-to-r from-white/90 via-white/50 to-transparent z-10" />
+      </div>
+
       {/* Abstract Engineering-inspired Background */}
       <div className="absolute top-0 inset-x-0 h-[600px] bg-linear-to-b from-blue-50/40 to-transparent pointer-events-none" />
       <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/10 rounded-full blur-[120px] pointer-events-none" />
@@ -19,7 +58,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         {/* Left Column: Content */}
-        <div className="text-left lg:col-span-7 flex flex-col items-start">
+        <div className="relative z-20 text-left lg:col-span-7 flex flex-col items-start w-full py-12 lg:py-20 lg:pr-8">
           <Typography
             variant="h1"
             color="black"

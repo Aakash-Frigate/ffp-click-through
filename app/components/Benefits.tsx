@@ -84,7 +84,7 @@ export function Benefits() {
                 } items-center gap-12 lg:gap-16 w-full group relative`}
               >
                 {/* Image Section */}
-                <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-[400px] rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
+                <div className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-[400px] rounded-4xl overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
                   <Image
                     src={benefit.image}
                     alt={benefit.title}
@@ -92,7 +92,7 @@ export function Benefits() {
                     className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-95 group-hover:opacity-100"
                   />
                   {/* Inner ring for polish */}
-                  <div className="absolute inset-0 ring-1 ring-inset ring-slate-900/5 rounded-[2rem] pointer-events-none" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-slate-900/5 rounded-4xl pointer-events-none" />
                 </div>
 
                 {/* Content Section */}
